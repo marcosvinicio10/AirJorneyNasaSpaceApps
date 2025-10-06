@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - AirJorney</title>
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="quiz-container">
+        <!-- Header -->
+        <header class="quiz-header">
+            <div class="header-content">
+                <a href="home.html" class="btn">
+                    <span>←</span>
+                    <span>Back</span>
+                </a>
+                <h1>AirJorney Challenge</h1>
+                <p>Test your knowledge about air quality and environment</p>
+            </div>
+        </header>
+
+        <!-- Quiz Progress -->
+        <div class="quiz-progress">
+            <div class="progress-bar">
+                <div class="progress-fill" id="quiz-progress"></div>
+            </div>
+            <span id="question-counter">1 of 5</span>
+        </div>
+
+        <!-- Quiz Content -->
+        <div class="quiz-content">
+            <div class="question-container" id="question-container">
+                <div class="question-header">
+                    <h2 id="question-text">Loading question...</h2>
+                    <div class="question-category" id="question-category">Category</div>
+                </div>
+                
+                <div class="answers-container" id="answers-container">
+                    <!-- Answers will be inserted dynamically -->
+                </div>
+            </div>
+
+            <!-- Quiz Controls -->
+            <div class="quiz-controls">
+                <button class="quiz-btn secondary" id="skip-btn" onclick="skipQuestion()">
+                    <span class="text">Skip</span>
+                </button>
+                <button class="quiz-btn primary" id="next-btn" onclick="nextQuestion()" disabled>
+                    <span class="text">Next</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div class="results-screen" id="results-screen" style="display: none;">
+            <div class="results-content">
+                <div class="results-header">
+                    <h2>Quiz Completed!</h2>
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <span class="score-number" id="final-score">0</span>
+                            <span class="score-label">points</span>
+                        </div>
+                        <div class="score-details">
+                            <div class="score-item">
+                                <span class="label">Correct:</span>
+                                <span class="value" id="correct-answers">0/5</span>
+                            </div>
+                            <div class="score-item">
+                                <span class="label">Accuracy:</span>
+                                <span class="value" id="accuracy">0%</span>
+                            </div>
+                            <div class="score-item">
+                                <span class="label">Time:</span>
+                                <span class="value" id="quiz-time">0s</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="medal-display">
+                    <div class="medal" id="medal-display">
+                        <span class="medal-icon">🥉</span>
+                        <span class="medal-text">Bronze</span>
+                    </div>
+                    <p class="medal-description" id="medal-description">
+                        Keep studying to improve your score!
+                    </p>
+                </div>
+
+                <div class="results-actions">
+                    <button class="quiz-btn secondary" onclick="window.location.href='home.html'">
+                        <span class="text">← Back</span>
+                    </button>
+                    <button class="quiz-btn primary" onclick="restartQuiz()">
+                        <span class="text">Try Again</span>
+                    </button>
+                    <button class="quiz-btn secondary" onclick="window.location.href='globe.html'">
+                        <span class="text">Explore Data</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Stats -->
+        <div class="quiz-stats">
+            <div class="stat-item">
+                <span class="stat-icon">⚡</span>
+                <span class="stat-label">Streak:</span>
+                <span class="stat-value" id="streak">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-icon">🏆</span>
+                <span class="stat-label">Best:</span>
+                <span class="stat-value" id="best-score">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-icon">📊</span>
+                <span class="stat-label">Total:</span>
+                <span class="stat-value" id="total-quizzes">0</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/pages/quiz-script.js"></script>
+</body>
+</html>

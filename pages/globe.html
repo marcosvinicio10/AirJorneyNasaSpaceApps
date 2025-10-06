@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earth Globe - NASA Space Apps</title>
+    <link rel="stylesheet" href="../styles/globe.css">
+</head>
+<body>
+    <div id="container">
+        <!-- Left Panel - Main Controls -->
+        <div id="left-panel" class="control-panel">
+            
+            <div class="control-section">
+                <h4>Data Type:</h4>
+                <div class="data-display-buttons">
+                    <button class="display-btn active" data-display="co2">CO₂</button>
+                    <button class="display-btn" data-display="temperature">Temperature</button>
+                    <button class="display-btn" data-display="ozone">Ozone</button>
+                    <button class="display-btn" data-display="humidity">Humidity</button>
+                    <button class="display-btn" data-display="pressure">Pressure</button>
+                </div>
+            </div>
+            
+            <div class="control-section">
+                <h4>TEMPO Data Status:</h4>
+                <div class="tempo-data">
+                    <div class="tempo-item">
+                        <span class="tempo-label">Coverage:</span>
+                        <span id="tempo-coverage" class="tempo-value">North America</span>
+                    </div>
+                    <div class="tempo-item">
+                        <span class="tempo-label">Resolution:</span>
+                        <span id="tempo-resolution" class="tempo-value">2km</span>
+                    </div>
+                    <div class="tempo-item">
+                        <span class="tempo-label">Frequency:</span>
+                        <span id="tempo-frequency" class="tempo-value">Hourly</span>
+                    </div>
+                    <div class="tempo-item">
+                        <span class="tempo-label">TEMPO Points:</span>
+                        <span id="tempo-points-count" class="tempo-value">5 active</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Right Panel - Filters and Information -->
+        <div id="right-panel" class="control-panel">
+            
+            <div class="control-section">
+                <h4>NASA TEMPO Data:</h4>
+                <div class="climate-data">
+                    <div class="climate-item">
+                        <span class="climate-label">Global Temperature:</span>
+                        <span id="global-temperature" class="climate-value">15.2°C - 28.7°C</span>
+                    </div>
+                    <div class="climate-item">
+                        <span class="climate-label">Average Humidity:</span>
+                        <span id="global-humidity" class="climate-value">65%</span>
+                    </div>
+                    <div class="climate-item">
+                        <span class="climate-label">Atmospheric Pressure:</span>
+                        <span id="global-pressure" class="climate-value">1013 hPa</span>
+                    </div>
+                    <div class="climate-item">
+                        <span class="climate-label">Wind Speed:</span>
+                        <span id="global-wind" class="climate-value">12 km/h</span>
+                    </div>
+                    <div class="climate-item">
+                        <span class="climate-label">Cloud Coverage:</span>
+                        <span id="global-clouds" class="climate-value">45%</span>
+                    </div>
+                    <div class="climate-item">
+                        <span class="climate-label">Feels Like:</span>
+                        <span id="global-feels-like" class="climate-value">22.5°C</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="control-section">
+                <h4>TEMPO Pollutant Rates:</h4>
+                <div class="pollutant-rates">
+                    <div class="pollutant-item">
+                        <span class="pollutant-label">Ozone (O₃):</span>
+                        <span id="ozone-rate" class="pollutant-value">45 ppb</span>
+                    </div>
+                    <div class="pollutant-item">
+                        <span class="pollutant-label">NO₂:</span>
+                        <span id="no2-rate" class="pollutant-value">18 ppb</span>
+                    </div>
+                    <div class="pollutant-item">
+                        <span class="pollutant-label">HCHO:</span>
+                        <span id="hcho-rate" class="pollutant-value">2.5 ppb</span>
+                    </div>
+                    <div class="pollutant-item">
+                        <span class="pollutant-label">Aerosols:</span>
+                        <span id="aerosol-rate" class="pollutant-value">0.3 AOD</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!-- Central Bottom Controls -->
+        <div class="center-controls">
+            <!-- Information Icon -->
+            <button id="info-btn" class="info-btn" title="Information about the data">
+                <svg class="info-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 16v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M12 8h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+            
+            <!-- Quiz Button -->
+            <button id="quiz-btn" class="quiz-btn" title="Test your knowledge">
+                <svg class="quiz-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <span class="quiz-text">Quiz</span>
+            </button>
+        </div>
+        
+        <!-- Information Modal -->
+        <div id="info-modal" class="info-modal">
+            <div class="info-modal-content">
+                <div class="info-modal-header">
+                    <h2>Data Sources</h2>
+                    <button id="close-info" class="close-btn">&times;</button>
+                </div>
+                <div class="info-modal-body">
+                    <div class="data-source nasa-highlight">
+                        <h3>NASA</h3>
+                        <p><strong>TEMPO:</strong> Atmospheric pollutants</p>
+                        <p><strong>FIRMS:</strong> Fire detection</p>
+                    </div>
+                    
+                    <div class="data-source">
+                        <h3>OpenWeatherMap</h3>
+                        <p>Global weather data</p>
+                    </div>
+                    
+                    <div class="data-source">
+                        <h3>OpenAQ</h3>
+                        <p>Air quality</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="loading">
+            <div class="spinner"></div>
+            <p>Loading NASA textures...</p>
+        </div>
+    </div>
+    
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    
+    <!-- Suprimir erros de console de APIs externas -->
+    <script>
+        // Override console.error temporarily to suppress API errors
+        const originalError = console.error;
+        console.error = function(...args) {
+            const errorMessage = args.join(' ');
+            // Suppress only API 401 errors
+            if (!errorMessage.includes('401') && !errorMessage.includes('Unauthorized')) {
+                originalError.apply(console, args);
+            }
+        };
+    </script>
+    
+    <script src="../scripts/main.js"></script>
+</body>
+</html>
